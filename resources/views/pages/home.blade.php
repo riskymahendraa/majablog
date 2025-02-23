@@ -10,14 +10,14 @@
             <div class="container max-w-md md:max-w-7xl my-5 mx-auto px-4 sm:px-6 lg:px-14">
                 <div class="flex justify-between items-center">
                     <div>
-                        <h1 class="text-3xl font-bold text-slate-800">
+                        <h1 class="text-xl md:text-3xl font-bold text-slate-800">
                             All Blogs
                         </h1>
                     </div>
                     @if (Auth::check())
                         <div class="flex justify-end items-center">
                             <button id="openModal"
-                                class="text-white bg-blue-400 hover:bg-blue-600 transition-all hover:ease-in hover:duration-200 rounded-lg p-2">
+                                class="text-white text-sm md:text-base bg-blue-400 hover:bg-blue-600 transition-all hover:ease-in hover:duration-200 rounded-lg p-2">
                                 Create a new post</>
                             </button>
                         </div>
@@ -82,7 +82,7 @@
                         {{ session('success') }}
                     </div>
                 @endif
-                <div class=" my-5 grid grid-cols-2 md:grid-cols-3 gap-8">
+                <div class=" my-5 grid md:grid-cols-3 gap-8">
                     @foreach ($posts as $post)
                         <div class="max-w-sm w-full mx-auto shadow-lg rounded-lg overflow-hidden">
                             <!-- Thumbnail -->
@@ -92,12 +92,10 @@
                             <!-- Card Content -->
                             <div class="p-4">
                                 <div class="flex justify-between items-center">
-                                    <h3 class="text-lg font-bold my-1 text-gray-800"> {{ $post->user->name }} </h3>
-                                    <div>
-                                        <p class="text-xs text-gray-600">{{ $post->created_at->diffForHumans() }}</p>
-                                    </div>
+                                    <h3 class="font-bold text-gray-800">{{ $post->title }}</h3>
+                                    <div class="text-xs my-1 text-gray-600"> {{ $post->user->name }} |
+                                        {{ $post->created_at->diffForHumans() }} </div>
                                 </div>
-                                <h3 class="text-base text-gray-800">{{ $post->title }}</h3>
                                 <p class="text-sm text-gray-600 mt-2">
                                     {{ $post->content }}
                                 </p>
