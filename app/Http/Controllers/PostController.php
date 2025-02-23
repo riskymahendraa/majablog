@@ -28,7 +28,7 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'thumbnail' => 'required|image|mimes:jpeg,jpg,png|max:2048',
+            'thumbnail' => 'required|image|mimes:jpeg,jpg,png,webp|max:2048',
         ]);
 
         $thumbnailPath = null;

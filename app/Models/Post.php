@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -16,6 +17,13 @@ class Post extends Model
     }
 
     protected $fillable = ['title', 'content', 'user_id', 'thumbnail'];
+
+    public function getThumbnailImageUrlAttribute()
+    {
+        return $this->thumbnail
+            ? Storage::url($this->thumbnail)
+            : asset('images/default-bg.jpg'); // Gambar default jika tidak ada
+    }
 
     protected static function boot()
     {
